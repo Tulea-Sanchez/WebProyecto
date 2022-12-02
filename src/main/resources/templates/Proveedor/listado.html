@@ -3,84 +3,48 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html
-    xmlns="http://www.w3.org/1999/xhtml" 
-    xmlns:th="http://www.thymeleaf.org">
-
-    <head>
-        <title>Clientes</title>
+<html 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:fragment="head">
+        <title>CControl</title>
         <meta charset="UTF-8"/>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                <link href="../css/style_proveedor.css" rel="stylesheet"/>
-                </head>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesone/css/all.css}"/>
+        <link href="css/menu.css" rel="stylesheet" />
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
 
-                <body class="body">
-                    <header class="header">      
-                        <div class="navbar">      
-                            <img src="img/logo-homepage.png" class="logo-home" alt="Home Logo">
-
-                                <ul>
-                                    <li><td><a th:href="@{/cliente/listado}">Clientes</a></td></li>
-                                    <li><td><a th:href="@{/proveedor/listado}">Proveedores</a></td></li>
-                                    <li><td><a th:href="@{/zona/listado}">Zonas</a></td></li>
-                                    <li><td><a th:href="@{/producto/listado}">Productos</a></td></li>
-                                    <li><a href="#">Vehiculos</a></li>
-                                    <li><a href="#">Cobros</a></li>
-                                    <li><a href="#">Estadisticas</a></li>
-                                </ul>
-                        </div>
-                    </header>
-
-
-                    <header>
-                        <aside>
-                            <br>
-                            <li><td><a th:href="@{/templates/index}">Inicio</a></td></li>
-                            <hr>
-                            <br>
-                            <li><td><a th:href="@{/cliente/listado}">Clientes</a></td></li>
-                            <hr>
-                            <br>
-                            <li><td><a th:href="@{/vehiculo/listado}">Vehículos</a></td></li>
-                            <hr>
-                            <br>
-                            <li><td><a th:href="@{/zona/listado}">Zonas</a></td></li> 
-                            <hr>
-                            <br>
-                            <li><td><a th:href="@{/cobro/listado}">Cobros</a></td></li>
-                            <hr>
-                            <br>
-                            <li><td><a th:href="@{/bitacora/listado}">Bitácora</a></td></li>
-                            <hr>
-                        </aside>
-                    </header>
-
-
+                <body class="body text-info bg-dark">
+                    <header th:replace="layout/plantilla :: header"/>
+                    <div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 200px">
                     <section>
-                        <h2><u>Datos Proveedor</u></h2>
+                        <div class="row g-3"><h2><u class="text-warning bg-dark">Datos Proveedores</u></h2></div>
                         <a th:href = "@{/proveedor/nuevo}">Nuevo Proveedor</a>
                         <div th:if="${proveedors != null and !proveedors.empty}">
                             <article>
-                                <table border="1">
+                                <table class="table table-dark table-striped">
                                     <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>descripcion</th>
-                                            <th>Telefono</th>
-                                            <th># Cuenta</th>
-                                            <th>Eliminar</th>
-                                            <th>Modificar</th>
+                                        <tr class="table-light">
+                                            <th class="text-warning bg-dark">ID</th>
+                                            <th class="text-warning bg-dark">descripcion</th>
+                                            <th class="text-warning bg-dark">Telefono</th>
+                                            <th class="text-warning bg-dark"># Cuenta</th>
+                                            <th class="text-warning bg-dark">Eliminar</th>
+                                            <th class="text-warning bg-dark">Modificar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="proveedor : ${proveedors}">
-                                             <td>[[${proveedor.idProveedor}]]</td>
-                                             <td>[[${proveedor.descripcion}]]</td>
-                                             <td>[[${proveedor.telefono}]]</td>
-                                             <td>[[${proveedor.num_cuenta}]]</td>
-                                             <td><a th:href="@{/proveedor/elimina/} + ${proveedor.idProveedor}">Elimina</a></td>
-                                             <td><a th:href="@{/proveedor/actualiza/} + ${proveedor.idProveedor}">Actualizar</a></td>
+                                             <td class="table-primary">[[${proveedor.idProveedor}]]</td>
+                                             <td class="table-primary">[[${proveedor.descripcion}]]</td>
+                                             <td class="table-primary">[[${proveedor.telefono}]]</td>
+                                             <td class="table-primary">[[${proveedor.num_cuenta}]]</td>
+                                             <td class="table-primary"><a th:href="@{/proveedor/elimina/} + ${proveedor.idProveedor}">Elimina</a></td>
+                                             <td class="table-primary"><a th:href="@{/proveedor/actualiza/} + ${proveedor.idProveedor}">Actualizar</a></td>
                                         </tr>
 
                                     </tbody>
@@ -91,8 +55,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <h3> No existen clientes que mostrar </h3>
                         </div>
                     </section>
-                    <footer>
-                        <p>&COPY; Derechos Reservados SistemaCC 2022</p>
-                    </footer>
+                    </div>
+                    <footer th:replace="layout/plantilla :: footer"/>
                 </body>
                 </html>
