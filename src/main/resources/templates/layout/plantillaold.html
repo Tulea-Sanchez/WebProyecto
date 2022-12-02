@@ -19,7 +19,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body style="margin-bottom: 140px">
         <header th:fragment="header" class="header">
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark p-20">
+            <nav class="navbar navbar-expand-md text-info navbar-dark bg-dark p-20">
                 <div class="container">
                 <a class="navbar-brand" th:href="@{/}">ControlCredito</a>
                 <button class="navbar-toggler"
@@ -42,22 +42,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <a class="nav-menu-link nav-link" th:href="@{/vehiculos/listado}">[[#{plantilla.vehiculos}]]</a>
                         </li>
                         
-                        <li class="nav-item px-3">
-                            <a class="nav-menu-link nav-link" th:href="@{/proveedores/listado}">[[#{plantilla.proveedores}]]</a>
-                        </li>
-                        
-                        <li class="nav-item px-3">
-                            <a class="nav-menu-link nav-link" th:href="@{/productos/listado}">[[#{plantilla.productos}]]</a>
-                        </li>
-                        
-                        
-                        <li class="nav-item px-3">
-                            <a class="nav-menu-link nav-link" th:href="@{/cobros/listado}">[[#{plantilla.cobros}]]</a>
-                        </li>
-                        
-                        <li class="nav-item px-3">
-                            <a class="nav-menu-link nav-link" th:href="@{/estadisticas/listado}">[[#{plantilla.estadisticas}]]</a>
-                        </li>
                         
                     </ul>
                     <ul class="navbar-nav ml-auto">

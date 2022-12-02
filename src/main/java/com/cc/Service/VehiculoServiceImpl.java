@@ -53,10 +53,10 @@ public class VehiculoServiceImpl implements VehiculoService {
         //si el idVehiculo es 0 lo inserta
         // si tiene valor el idvehiculo lo agrega
         //se toma el dato de credito dentro de cleitne
-        Zona zona = vehiculo.getZona();
+        //Zona zona = vehiculo.getZona();
         //inserta el zona antes que el zona
-        zona = zonaDao.save(zona);
-        vehiculo.setZona(zona);
+        //zona = zonaDao.save(zona);
+        //vehiculo.setZona(zona);
         
         vehiculoDao.save(vehiculo);
     }
