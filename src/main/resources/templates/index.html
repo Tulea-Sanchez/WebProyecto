@@ -1,21 +1,49 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html xmlns:th="http://www.thymeleaf.org"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head th:replace="layout/plantilla :: head"/>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Menù Lateral con Css</title>
+        <link href="css/style_menu.css" rel="stylesheet" />
+</head>
+<body>
+	<header class="header">
+		<div class="container">
+		<div class="btn-menu">
+			<label for="btn-menu">☰</label>
+		</div>
+			<div class="logo">
+                            <img src="img/asfgdfg.png" alt=""/>
+			</div>
+			<nav class="menu">
+				<a href="#">Inicio</a>
+				<a href="#">Nosotros</a>
+				<a href="#">Blog</a>
+				<a href="#">Contacto</a>
+                                <a href="#">aplicación</a>
+			</nav>
+		</div>
+	</header>
+    
+	<div class="capa"></div>
+        
+        
+<!--	--------------->
+<input type="checkbox" id="btn-menu">
+<div class="container-menu">
+    
+	<div class="cont-menu">
+		<nav>
+			<a href="#">Portafolio</a>
+			<a href="#">Servicios</a>
+			<a href="#">Suscribirse</a>
+			<a href="#">Facebook</a>
+			<a href="#">Youtube</a>
+			<a href="#">Instagram</a>
+		</nav>
+		<label for="btn-menu">✖️</label>
+	</div>
+</div>
 
-    <body>
-        <header th:replace="layout/plantilla :: header"/>
-        <div>
-            <p class="text-warning bg-dark"><h2 class="text-light bg-dark">>[[#{index.titulo}]]</h2></p>
-            
-            
-            
-        </div>
-        <footer th:replace="layout/plantilla :: footer"/>
-    </body>
+</body>
+<footer><h2>Derechos reservados Grupo #</h2></footer>
 </html>
