@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Tienda</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>    
+        
+        <div class="contenido">
+            <h2>Datos de Cliente</h2>
+            <a th:href = "@{/cliente/listado}">Regresar</a>
+            <hr/>
+            <form th:action="@{/cliente/guardar}"
+                method="post"
+                th:object="${cliente}">
+
+                <input type="number" name="idCliente" th:fiel="*{idCliente}"/>
+                <input type="hidden" name="descripcionZ" th:field="*{zona.descripcion}"/> 
+                <input type="hidden" name="VehiculoId"  th:field="*{zona.vehiculo.idVehiculo}"/> 
+                
+                <fieldset>
+                    <label for="nombre">Nombre: </label>
+                    <input type="text" name="nombre" required="true" placeholder="Nombre" th:field="*{nombre}"/> 
+                </fieldset>
+
+                <fieldset>
+                    <label for="telefono">Teléfono  </label>
+                    <input type="tel" name="telefono" required="true" placeholder="0000-0000" th:field="*{telefono}"/> 
+                </fieldset>
+                
+                <fieldset>
+                    <label for="direccion">Direccion </label>
+                    <input type="text" name="direccion" required="true" placeholder="direccion" th:field="*{direccion}"/> 
+                </fieldset>
+                
+                <fieldset>
+                    <label for="zona">ID Zona </label>
+                    <input type="text" name="zona" required="true" placeholder="zona" th:field="*{zona.idZona}"/> 
+                </fieldset>
+
+                
+
+                               
+                
+                <hr/>
+                <input type="submit" name="guardar" value="guardar"/>
+            </form>   
+        </div>
+    </body>
+</html>
+ 
