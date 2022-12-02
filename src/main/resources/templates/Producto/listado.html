@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Productos</title>
+        <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <link href="../css/style_producto.css" rel="stylesheet"/>
+                </head>
+
+                <body class="body">
+                    <header class="header">      
+                        <div class="navbar">      
+                            <img src="img/logo-homepage.png" class="logo-home" alt="Home Logo">
+
+                                <ul>
+                                    <li><td><a th:href="@{/cliente/listado}">Clientes</a></td></li>
+                                    <li><td><a th:href="@{/proveedor/listado}">Proveedores</a></td></li>
+                                    <li><td><a th:href="@{/zona/listado}">Zonas</a></td></li>
+                                    <li><td><a th:href="@{/producto/listado}">Productos</a></td></li>
+                                    <li><a href="#">Vehiculos</a></li>
+                                    <li><a href="#">Cobros</a></li>
+                                    <li><a href="#">Estadisticas</a></li>
+                                </ul>
+                        </div>
+                    </header>
+
+
+                    <header>
+                        <aside>
+                            <br>
+                            <li><td><a th:href="@{/templates/index}">Inicio</a></td></li>
+                            <hr>
+                            <br>
+                            <li><td><a th:href="@{/cliente/listado}">Clientes</a></td></li>
+                            <hr>
+                            <br>
+                            <li><td><a th:href="@{/vehiculo/listado}">Vehículos</a></td></li>
+                            <hr>
+                            <br>
+                            <li><td><a th:href="@{/zona/listado}">Zonas</a></td></li> 
+                            <hr>
+                            <br>
+                            <li><td><a th:href="@{/cobro/listado}">Cobros</a></td></li>
+                            <hr>
+                            <br>
+                            <li><td><a th:href="@{/bitacora/listado}">Bitácora</a></td></li>
+                            <hr>
+                        </aside>
+                    </header>
+
+
+                    <section>
+                        <h2><u>Datos Productos</u></h2>
+                        <a th:href = "@{/producto/nuevo}">Nuevo Producto</a>
+                        <div th:if="${productos != null and !productos.empty}">
+                            <article>
+                                <table border="1">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Proveedor</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th>Descripcion</th>
+                                            <th>Eliminar</th>
+                                            <th>Modificar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="producto : ${productos}">
+                                            <td>[[${producto.idProducto}]]</td>
+                                            <td>[[${producto.proveedor.descripcion}]]</td>
+                                            <td>[[${producto.precio_unit}]]</td>
+                                            <td>[[${producto.cantidad}]]</td>
+                                            <td>[[${producto.descripcion}]]</td>
+                                            <td><a th:href="@{/producto/elimina/} + ${producto.idProducto}">Elimina</a></td>
+                                            <td><a th:href="@{/producto/actualiza/} + ${producto.idProducto}">Actualizar</a></td>
+                                       </tr>
+                                    </tbody>
+                                </table>
+                            </article>
+                        </div>
+                        <div th:if="${productos == null or productos.empty}">
+                            <h3> No existen clientes que mostrar </h3>
+                        </div>
+                    </section>
+                    <footer>
+                        <p>&COPY; Derechos Reservados SistemaCC 2022</p>
+                    </footer>
+                </body>
+                </html>

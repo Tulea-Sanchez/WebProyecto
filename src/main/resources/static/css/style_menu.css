@@ -1,0 +1,302 @@
+/*{ background-color: gray;
+
+}
+
+.body{
+    background-color: black;
+}
+
+.table{
+    background-color: red;
+    
+}
+
+
+.header {
+    background-color: black;
+    height: 90px;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    /*background-image: linear-gradient(rgba(5,10,5,0.80),rgba(90,40,90,0.80)),url(../img/backgroundaccountdigital.jpg);
+    background-color:gray;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.navbar {
+    width: 80%;
+    margin: auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.logo-home {
+    width: 130px;
+    cursor: pointer;
+    size: 10px;
+}
+
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: Roboto, "sans-serif";
+    font-size: 1.2rem;
+}
+
+.navbar ul li::before {
+    content: "";
+    height: 3px;
+    width: 0%;
+    background: yellowgreen;
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+    transition: 0.4s ease-out;
+}
+
+.navbar ul li:hover::before {
+    width: 100%;
+}
+
+.header {
+    background-color: #020003;
+    font-family: Verdana;
+    text-transform: uppercase;
+    /*height: 90px;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+}
+
+
+.body{
+    background-color: gray;
+}
+
+
+section{
+    text-align: center;
+    /*background-color: white;
+    color: black;
+    height: 20px;
+    position: fixed;
+    bottom: 500px;
+    left: 500px;
+    width: 70%;
+    width: 1000px;  
+    
+}
+
+
+footer{
+    background-color: black;
+    text-align: center;
+    color: white;
+    height: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+h2 {
+    text-align: center;   
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0 40px;
+    line-height: 45px; 
+    
+         
+}
+
+aside{
+    background-color: #221f26;
+    width: 150px;
+    height: 100%;
+    position: fixed;
+    top:92px;
+    left:0;
+    text-align:center;
+    
+    text-decoration: none;
+    font-size: 1.2rem;
+    
+    font-family: Verdana;
+    text-transform: uppercase;
+    list-style: none;
+
+}*/
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: 'Montserrat Alternates', sans-serif;
+	}
+	body{
+		background-color: #221f26;
+		background-size: 100vw 100vh;
+		background-repeat: no-repeat;
+	}
+	.capa{
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		background: rgba(0,0,0,0.6);
+		z-index: -1;
+		top: 0;left: 0;
+                
+	}
+	/*Estilos para el encabezado*/
+	.header{
+		width: 100%;
+		height: 100px;
+		position: fixed;
+		top: 0;left: 0;
+                background-color: black;
+                text-transform: uppercase;
+                                
+	}
+        
+        
+	.container{
+		width: 90%;
+		max-width: 1200px;
+		margin: auto;
+	}
+	.container .btn-menu, .logo{
+		float: left;
+		line-height:100px;
+	}
+        
+        
+	.container .btn-menu label{
+		color: #fff;
+		font-size: 25px;
+		cursor: pointer;
+                width: 1px;
+                
+	}
+	.logo img{
+		color: #fff;
+		width: 200px;
+                height: 95.6px;
+		margin-left: 20px;
+                
+	}
+	.container .menu{
+		float: right;
+		line-height: 100px;
+                
+	}
+	.container .menu a{
+		display: inline-block;
+		padding: 15px;
+		line-height: normal;
+		text-decoration: none;
+		color: #fff;
+		transition: all 0.3s ease;
+		border-bottom: 2px solid transparent;
+		font-size: 15px;
+		margin-right: 5px;
+	}
+	.container .menu a:hover{
+		border-bottom: 2px solid #c7c7c7;
+		padding-bottom: 5px;
+	}
+	/*Fin de Estilos para el encabezado*/
+
+	/*Menù lateral*/
+	#btn-menu{
+		display: none;
+                                
+	}
+	.container-menu{
+		position: absolute;
+		background: rgba(0,0,0,0.5);
+		width: 100%;
+		height: 100%;
+		top: 0;left: 0;
+		transition: all 500ms ease;
+		opacity: 0;
+		visibility: hidden;
+                padding: 100px;
+                
+                
+	}
+	#btn-menu:checked ~ .container-menu{
+		opacity: 1;
+		visibility: visible;
+	}
+	.cont-menu{
+		width: 100%;
+		max-width: 250px;
+		background: #1c1c1c;
+		height: 100%;
+		position: relative;
+		transition: all 500ms ease;
+		transform: translateX(-100%);
+                padding: 100px;
+                
+                
+	}
+	#btn-menu:checked ~ .container-menu .cont-menu{
+		transform: translateX(-70%);
+	}
+	.cont-menu nav{
+		transform: translateY(5%);
+	}
+	.cont-menu nav a{
+		display: block;
+		text-decoration: none;
+		padding: 20px;
+		color: #c7c7c7;
+		border-left: 10px solid transparent;
+		transition: all 400ms ease;
+                
+                
+	}
+	.cont-menu nav a:hover{
+		border-left: 5px solid #c7c7c7;
+		background: #1f1f1f;
+	}
+	.cont-menu label{
+		position: absolute;
+		right: 5px;
+		top: 10px;
+		color: #fff;
+		cursor: pointer;
+		font-size: 18px;
+	}
+        
+        
+	/*Fin de Menù lateral*/
