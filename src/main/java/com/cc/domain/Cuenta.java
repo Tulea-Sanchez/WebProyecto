@@ -14,29 +14,31 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table( name= "clientes")
-public class Cliente implements Serializable {
+@Table( name= "cuentas")
+public class Cuenta implements Serializable {
  
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCliente;
+    private Long idCuenta;
     
-    @JoinColumn(name="id_zona", referencedColumnName="id_zona")
+    @JoinColumn(name="id_cliente")
     @ManyToOne
-    private Zona zona;
-    private String nombre,telefono,direccion;
+    private Cliente cliente;
+    private String ult_abono;
+    private int saldo;
 
-    public Cliente(Zona zona, String nombre, String telefono, String direccion) {
-        this.zona = zona;
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.direccion = direccion;
-
+    public Cuenta(Long idCuenta, Cliente cliente, String ult_abono, int saldo) {
+        this.idCuenta = idCuenta;
+        this.cliente = cliente;
+        this.ult_abono = ult_abono;
+        this.saldo = saldo;
     }
 
-    public Cliente() {
+    
+
+    public Cuenta() {
     }
 
     

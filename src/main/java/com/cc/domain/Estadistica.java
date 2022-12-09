@@ -14,8 +14,8 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table( name= "clientes")
-public class Cliente implements Serializable {
+@Table( name= "Clientes")
+public class Estadistica implements Serializable {
  
     private static final long serialVersionUID = 1L;
     
@@ -25,10 +25,12 @@ public class Cliente implements Serializable {
     
     @JoinColumn(name="id_zona", referencedColumnName="id_zona")
     @ManyToOne
+    
+    
     private Zona zona;
     private String nombre,telefono,direccion;
 
-    public Cliente(Zona zona, String nombre, String telefono, String direccion) {
+    public Estadistica(Zona zona, String nombre, String telefono, String direccion) {
         this.zona = zona;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -36,7 +38,7 @@ public class Cliente implements Serializable {
 
     }
 
-    public Cliente() {
+    public Estadistica() {
     }
 
     

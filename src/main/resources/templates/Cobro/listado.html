@@ -3,13 +3,26 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:fragment="head">
+        <title>CControl</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesone/css/all.css}"/>
+        <link href="css/menu.css" rel="stylesheet" />
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+
+                <body class="body text-white-50 bg-dark">
+                    <header th:replace="layout/plantilla :: header"/>
+                    <section th:replace="cobro/fragmentosCobro :: botonesAgregar"/>
+                    <section th:replace="cobro/fragmentosCobro :: agregarCuenta"/>
+                    <section th:replace="cobro/fragmentosCobro :: listadoCuentas"/> 
+                    <footer th:replace="layout/plantilla :: footer"/>
+                </body>
+                </html>
