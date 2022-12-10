@@ -18,6 +18,10 @@ public interface CuentaService {
     
     public Cuenta getCuenta(Cuenta cuenta);
     
+    public Cuenta getCuenta(Long id);
+    
+    public Cuenta returnNull();
+    
     public void save (Cuenta cuenta);
     
     public void delete (Cuenta cuenta);

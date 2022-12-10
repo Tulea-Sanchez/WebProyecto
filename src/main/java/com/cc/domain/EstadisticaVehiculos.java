@@ -13,26 +13,26 @@ import lombok.Data;
  * @author Tuleaa
  */
 @Data
-public class Estadistica implements Serializable {
+public class EstadisticaVehiculos implements Serializable {
  
     
-    private String zona;
-    private int saldo;
+    private String descripcion;
+    private String placa;
+    private int zonas;
     private int cuentas;
-    private String vehiculo;
+    private int saldo;
 
-    public Estadistica(String zona, String vehiculo, int cuentas, int saldo) {
-        this.zona = zona;
-        this.saldo = saldo;
+    public EstadisticaVehiculos(String descripcion, String placa, int zonas, int saldo, int cuentas) {
+        this.descripcion = descripcion;
+        this.placa = placa;
+        this.zonas = zonas;
         this.cuentas = cuentas;
-        this.vehiculo = vehiculo;
+        this.saldo = saldo;
     }
-            
-    
 
     
 
-    public Estadistica() {
+    public EstadisticaVehiculos() {
     }
 
     

@@ -2,18 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cc.dao;
+package com.cc.Service;
 
 import com.cc.domain.Cliente;
-import com.cc.domain.Cuenta;
+import com.cc.domain.Estadistica;
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Tuleaa
  */
-public interface CuentasDao extends JpaRepository<Cuenta,Long>{
-
-     public Cuenta findByIdCuenta(Long detalle);
+public interface EstadisticaService {
+    
+    //metodos para crear un crud .. CREATE, READ, UPDATE, DELETE
+    public List<Estadistica> getEstadisticas();
+    
+    
 }

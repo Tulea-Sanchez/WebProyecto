@@ -14,7 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>    
         
         <div class="contenido">
-            <h2>Datos de Vehiculo</h2>
+            <h2>Datos de los vehiculos</h2>
             <a th:href = "@{/vehiculo/listado}">Regresar</a>
             <hr/>
             <form th:action="@{/vehiculo/guardar}"
@@ -40,7 +40,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 
                 <fieldset>
                     <label for="vehiculo">Vehiculo: </label>
-                    <input type="number" name="Número de Placa" required="true" placeholder="######" th:field="*{vehiculo.num_placa}"/> 
+                    <input type="number" name="Número de Placa" required="true" placeholder="#####" th:field="*{vehiculo.num_placa}"/> 
                 </fieldset>
 
                                          

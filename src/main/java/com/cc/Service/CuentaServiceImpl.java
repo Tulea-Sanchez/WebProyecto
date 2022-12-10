@@ -53,6 +53,19 @@ public class CuentaServiceImpl implements CuentaService {
     }
     
     @Override
+    @Transactional(readOnly = true)
+    public Cuenta getCuenta(Long id) {
+        return cuentaDao.findById(id).orElse(null);
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Cuenta returnNull() {
+        Long num = 0L;
+        return cuentaDao.findById(num).orElse(null);
+    }
+    
+    @Override
     @Transactional
     public void save(Cuenta cuenta) {
         

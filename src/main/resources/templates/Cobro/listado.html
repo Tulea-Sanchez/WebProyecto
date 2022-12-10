@@ -19,10 +19,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
 
                 <body class="body text-white-50 bg-dark">
+                    
                     <header th:replace="layout/plantilla :: header"/>
-                    <section th:replace="cobro/fragmentosCobro :: botonesAgregar"/>
-                    <section th:replace="cobro/fragmentosCobro :: agregarCuenta"/>
-                    <section th:replace="cobro/fragmentosCobro :: listadoCuentas"/> 
+                    
+                    <div class="text-center p-2" th:if="${cuentas != null and !cuentas.empty}">
+                        <section th:replace="cobro/fragmentosCobro :: botonesAgregar"/>
+                        <section th:replace="cobro/fragmentosCobro :: agregarCuenta"/>
+                        <section th:replace="cobro/fragmentosCobro :: listadoCuentas"/> 
+                    </div>
+                    <div class="text-center p-2" th:if="${cuentas == null or cuentas.empty}">
+                        <section th:replace="cobro/fragmentosCobro :: botonesAgregar"/>
+                        <section th:replace="cobro/fragmentosCobro :: agregarCuenta"/>
+                        <span th:text="#{cuenta.no_mostrar}">Lista vacía</span>
+                    </div>
                     <footer th:replace="layout/plantilla :: footer"/>
                 </body>
                 </html>
