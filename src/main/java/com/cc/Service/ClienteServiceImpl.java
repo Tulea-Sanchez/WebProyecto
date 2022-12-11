@@ -56,8 +56,7 @@ public class ClienteServiceImpl implements ClienteService {
         Zona zona = cliente.getZona();
         //inserta el zona antes que el zona
         zona = zonaDao.save(zona);
-        cliente.setZona(zona);
-        
+        cliente.setZona(zona);      
         clienteDao.save(cliente);
     }
     

@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>CC Productos</title>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         
     </head>
@@ -21,9 +21,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 method="post"
                 th:object="${producto}">
                              
-                       
-                
-                
+ 
                 <input type="hidden" name="idProducto" th:fiel="*{idProducto}"/>
                 
                 <fieldset>
@@ -43,12 +41,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </fieldset>
 
                 <fieldset>
-                    <label for="descripcion">Descripcion: </label>
+                    <label for="descripcion">Descripción: </label>
                     <input type="text" name="descripcion" required="true" placeholder="descripcion" th:field="*{descripcion}"/> 
                 </fieldset>
                 
                 <hr/>
-                <input type="submit" name="guardar" value="guardar"/>
+                <input type="submit" name="guardar" value="Guardar"/>
             </form>   
         </div>
     </body>
