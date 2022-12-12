@@ -6,7 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 <html xmlns:th="https://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Tienda</title>
+        <title>CC Vehículos</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         
@@ -14,7 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>    
         
         <div class="contenido">
-            <h2>Datos de los vehiculos</h2>
+            <h2>Datos de Vehiculo</h2>
             <a th:href = "@{/vehiculo/listado}">Regresar</a>
             <hr/>
             <form th:action="@{/vehiculo/guardar}"
@@ -22,25 +22,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 th:object="${vehiculo}">
 
                 <input type="hidden" name="idVehiculo" th:fiel="*{idVehiculo}"/>
-                <input type="hidden" name="descripcion" th:field="*{vehiculo.num_placa}"/> 
-                <input type="hidden" name="descripcionVeh"  th:field="*{vehiculo.descripcion}"/> 
+                 
                
                 
                 <fieldset>
-                    <label for="descripcion">Descripcio: </label>
-                    <input type="text" name="descripcion" required="true" placeholder="descripcion" th:field="*{descripcion}"/> 
+                    <label for="ID">ID: </label>
+                    <input type="number" name="ID" required="true" placeholder="ID" th:field="*{idVehiculo}"/> 
                 </fieldset>
 
                                 
                 <fieldset>
-                    <label for="vehiculo">Vehiculo: </label>
-                    <input type="number" name="vehiculo" required="true" placeholder="vehiculo" th:field="*{vehiculo.idVehiculo}"/> 
+                    <label for="placa">Número de Placa: </label>
+                    <input type="number" name="placa" required="true" placeholder="placa" th:field="*{num_placa}"/> 
                 </fieldset>
                 
                 
                 <fieldset>
-                    <label for="vehiculo">Vehiculo: </label>
-                    <input type="number" name="Número de Placa" required="true" placeholder="#####" th:field="*{vehiculo.num_placa}"/> 
+                    <label for="descripcion">Descripcion: </label>
+                    <input type="text" name="descripcion" required="true" placeholder="descripcion" th:field="*{descripcion}"/> 
                 </fieldset>
 
                                          

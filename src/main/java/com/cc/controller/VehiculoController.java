@@ -50,4 +50,12 @@ public class VehiculoController {
     }
     
     
+    @GetMapping("/vehiculo/elimina/{idVehiculo}")
+    public String clienteElimina(Vehiculo vehiculo){
+        vehiculoService.delete(vehiculo);
+        return "redirect:/vehiculo/listado";
+    }
+    
+    
+    
 }
