@@ -54,10 +54,10 @@ public class ProductoServiceImpl implements ProductoService {
         //si el idProducto es 0 lo inserta
         // si tiene valor el idproducto lo agrega
         //se toma el dato de credito dentro de cleitne  
-        Proveedor proveedor = producto.getProveedor();
+        //Proveedor proveedor = producto.getProveedor();
         //inserta el zona antes que el zona
-        proveedor = proveedorDao.save(proveedor);
-        producto.setProveedor(proveedor);
+        //proveedor = proveedorDao.save(proveedor);
+        //producto.setProveedor(proveedor);
         productoDao.save(producto);
     }
     

@@ -37,12 +37,7 @@ public class Proveedor implements Serializable {
     public Proveedor() {
     }
 
-    
-    
-    
-    
 
-    
 
     
     
