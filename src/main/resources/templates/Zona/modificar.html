@@ -7,14 +7,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Tienda</title>
+        <!--<meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
         <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesone/css/all.css}"/>
+        <link href="css/menu.css" rel="stylesheet" />
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
         
     </head>
-    <body>    
-        
-        <div class="contenido">
-            <h2>Datos de Zona</h2>
+    <body class="body text-info bg-dark">    
+        <div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 200px">
+        <div class="row g-3"><h2><u class="text-warning bg-dark">Datos de Zona</u></h2></div>
+       <!-- <div class="contenido"> -->
+         <!--   <h2>Datos de Zona</h2> -->
             <a th:href = "@{/zona/listado}">Regresar</a>
             <hr/>
             <form th:action="@{/zona/guardar}"
@@ -27,13 +35,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                
                 
                 <fieldset>
-                    <label for="descripcion">Descripcio: </label>
+                    <label class="text-warning bg-dark" for="descripcion">Descripcion: </label>
                     <input type="text" name="descripcion" required="true" placeholder="descripcion" th:field="*{descripcion}"/> 
                 </fieldset>
 
                                 
                 <fieldset>
-                    <label for="vehiculo">Vehiculo: </label>
+                    <label class="text-warning bg-dark" for="vehiculo">Vehiculo: </label>
                     <input type="number" name="vehiculo" required="true" placeholder="vehiculo" th:field="*{vehiculo.idVehiculo}"/> 
                 </fieldset>
 
@@ -43,6 +51,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <input type="submit" name="guardar" value="guardar"/>
             </form>   
         </div>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
  

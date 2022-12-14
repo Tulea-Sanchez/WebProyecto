@@ -7,14 +7,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>CC Proveedores</title>
+        <!-- <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
         <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesone/css/all.css}"/>
+        <link href="css/menu.css" rel="stylesheet" />
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
         
     </head>
-    <body>    
-        
-        <div class="contenido">
-            <h2>Datos de Productos</h2>
+    <body class="body text-info bg-dark">    
+        <div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 200px">
+        <div class="row g-3"><h2><u class="text-warning bg-dark">Datos Productos</u></h2></div>
+            <!-- <h2>Datos de Productos</h2> -->
             <a th:href = "@{/producto/listado}">Regresar</a>
             <hr/>
             <form th:action="@{/producto/guardar}"
@@ -25,30 +32,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                              
                 
                 <fieldset>
-                    <label for="Producto">Producto: </label>
-                    <input type="text" name="producto" required="true" placeholder="producto" th:field="*{idProducto}"/> 
+                    <label class="text-warning bg-dark" for="Producto">Producto: </label>
+                    <input type="text" name="Producto" required="true" placeholder="Producto" th:field="*{idProducto}"/> 
                 </fieldset>
 
                                 
                 <fieldset>
-                    <label for="descripcion">Descripcion: </label>
+                    <label class="text-warning bg-dark" for="descripcion">Descripcion: </label>
                     <input type="text" name="descripcion" required="true" placeholder="descripcion" th:field="*{descripcion}"/> 
                 </fieldset>
 
                 <fieldset>
-                    <label for="cantidad">Cantidad: </label>
+                    <label class="text-warning bg-dark" for="cantidad">Cantidad: </label>
                     <input type="number" name="cantidad" required="true" placeholder="cantidad" th:field="*{cantidad}"/> 
                 </fieldset>
 
                 <fieldset>
-                    <label for="precio_unit">Precio Unitario: </label>
-                    <input type="number" name="precio_unit" required="true" placeholder="precio_unit" th:field="*{precio_unit}"/> 
+                    <label class="text-warning bg-dark" for="precio">Precio Unitario: </label>
+                    <input type="number" name="precio" required="true" placeholder="precio" th:field="*{precio_unit}"/> 
                 </fieldset>
                 
                 <hr/>
                 <input type="submit" name="guardar" value="guardar"/>
             </form>   
         </div>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
  

@@ -1,16 +1,10 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- 
 package com.cc.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
 import lombok.Data;
 
-/**
- *
- * @author Tuleaa
  
 @Data
 @Entity
@@ -44,32 +38,26 @@ public class Producto implements Serializable {
     }
 
 }
-    
-    */
+
+*/  
 
 
 
 
-/*NOTA= DE AQUÍ PARA ARRIBA ERA COMO ESTABA ESTA CLASE, DE AQUÍ PARA ABAJO ESTAN LOS CAMBIOS QUE REALICE* /
+/*NOTA= DE AQUÍ PARA ARRIBA ERA COMO ESTABA ESTA CLASE, DE AQUÍ PARA ABAJO ESTAN LOS CAMBIOS QUE REALICE*/
 
 
 
 
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.cc.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
 import lombok.Data;
 
-/**
- *
- * @author Tuleaa
- */
+
 @Data
 @Entity
 @Table(name="productos")
@@ -92,14 +80,11 @@ public class Producto implements Serializable {
         this.cantidad = cantidad;
         this.precio_unit = precio_unit;
     }
+    
+    
 
     public Producto() {
     }
-
-
-
     
-    
-    
+
 }
-

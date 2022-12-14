@@ -17,12 +17,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
         <script th:src="@{/webjars/popper/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
-
     </head>
-    <body>    
+    
+    
+    <body class="body text-info bg-dark">    
         <header th:replace="layout/plantilla :: header"/>
         <div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 200px">
+            
             <!-- <h2>Datos de Vehiculo</h2> -->
             <div class="row g-3"><h2><u class="text-warning bg-dark">Datos Vehiculo</u></h2></div>
             <a th:href = "@{/vehiculo/listado}">Regresar</a>
@@ -35,20 +36,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 
 
-                <fieldset>
-                    <label for="ID">ID: </label>
+                <fieldset class="table-light">
+                    <label class="text-warning bg-dark" for="ID">ID: </label>
                     <input type="number" name="ID" required="true" placeholder="ID" th:field="*{idVehiculo}"/> 
                 </fieldset>
 
 
-                <fieldset>
-                    <label for="placa">Número de Placa: </label>
+                <fieldset class="table-light">
+                    <label class="text-warning bg-dark" for="placa">Número de Placa: </label>
                     <input type="number" name="placa" required="true" placeholder="placa" th:field="*{num_placa}"/> 
                 </fieldset>
 
 
-                <fieldset>
-                    <label for="descripcion">Descripcion: </label>
+                <fieldset class="table-light">
+                    <label class="text-warning bg-dark" for="descripcion">Descripcion: </label>
                     <input type="text" name="descripcion" required="true" placeholder="descripcion" th:field="*{descripcion}"/> 
                 </fieldset>
 

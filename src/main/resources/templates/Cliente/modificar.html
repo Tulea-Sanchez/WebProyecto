@@ -9,12 +9,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Tienda</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesone/css/all.css}"/>
+        <link href="css/menu.css" rel="stylesheet" />
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
     </head>
-    <body>    
+    <body class="body text-info bg-dark">    
         
-        <div class="contenido">
-            <h2>Datos de Cliente</h2>
+        <div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 200px">
+            <div class="row g-3"><h2><u class="text-warning bg-dark">Datos de Cliente</u></h2></div>
             <a th:href = "@{/cliente/listado}">Regresar</a>
             <hr/>
             <form th:action="@{/cliente/guardar}"
@@ -23,25 +29,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                 <input type="number" name="idCliente" th:fiel="*{idCliente}"/>
                 <input type="hidden" name="descripcionZ" th:field="*{zona.descripcion}"/> 
-                <input type="hidden" name="VehiculoId"  th:field="*{zona.vehiculo.idVehiculo}"/> 
+                <input type="hidden" name="VehiculoId"  th:field="*{zona.vehiculo.idVehiculo}"/>  
                 
                 <fieldset>
-                    <label for="nombre">Nombre: </label>
+                    <label class="text-warning bg-dark" for="nombre">Nombre: </label>
                     <input type="text" name="nombre" required="true" placeholder="Nombre" th:field="*{nombre}"/> 
                 </fieldset>
 
                 <fieldset>
-                    <label for="telefono">Teléfono  </label>
+                    <label class="text-warning bg-dark" for="telefono">Teléfono  </label>
                     <input type="tel" name="telefono" required="true" placeholder="0000-0000" th:field="*{telefono}"/> 
                 </fieldset>
                 
                 <fieldset>
-                    <label for="direccion">Direccion </label>
+                    <label class="text-warning bg-dark" for="direccion">Direccion </label>
                     <input type="text" name="direccion" required="true" placeholder="direccion" th:field="*{direccion}"/> 
                 </fieldset>
                 
                 <fieldset>
-                    <label for="zona">ID Zona </label>
+                    <label class="text-warning bg-dark" for="zona">ID Zona </label>
                     <input type="text" name="zona" required="true" placeholder="zona" th:field="*{zona.idZona}"/> 
                 </fieldset>
 
@@ -53,6 +59,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <input type="submit" name="guardar" value="guardar"/>
             </form>   
         </div>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
  

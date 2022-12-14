@@ -28,8 +28,8 @@ public class ProductoServiceImpl implements ProductoService {
     @Autowired
     private ProductoDao productoDao;
        
-    @Autowired
-    private ProveedorDao proveedorDao;
+    //@Autowired
+    //private ProveedorDao proveedorDao;
     //metodos para crear un crud .. CREATE, READ, UPDATE, DELETE
     
     //aqui va la implementacion de credito
