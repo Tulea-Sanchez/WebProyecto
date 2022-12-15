@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Tienda</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesone/css/all.css}"/>
+        <link href="css/menu.css" rel="stylesheet" />
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    </head>
+    <body class="body text-info bg-dark">    
+        
+        <div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 200px">
+            <div class="row g-3"><h2><u class="text-warning bg-dark">Datos de Cliente</u></h2></div>
+            <a th:href = "@{/cliente/listado}">Regresar</a>
+            <hr/>
+            <form th:action="@{/cliente/guardar}"
+                method="post"
+                th:object="${cliente}">
+
+                <input type="number" name="idCliente" th:fiel="*{idCliente}"/>
+                <input type="hidden" name="descripcionZ" th:field="*{zona.descripcion}"/> 
+                <input type="hidden" name="VehiculoId"  th:field="*{zona.vehiculo.idVehiculo}"/>  
+                
+                <fieldset>
+                    <label class="text-warning bg-dark" for="nombre">Nombre: </label>
+                    <input type="text" name="nombre" required="true" placeholder="Nombre" th:field="*{nombre}"/> 
+                </fieldset>
+
+                <fieldset>
+                    <label class="text-warning bg-dark" for="telefono">Teléfono  </label>
+                    <input type="tel" name="telefono" required="true" placeholder="0000-0000" th:field="*{telefono}"/> 
+                </fieldset>
+                
+                <fieldset>
+                    <label class="text-warning bg-dark" for="direccion">Direccion </label>
+                    <input type="text" name="direccion" required="true" placeholder="direccion" th:field="*{direccion}"/> 
+                </fieldset>
+                
+                <fieldset>
+                    <label class="text-warning bg-dark" for="zona">ID Zona </label>
+                    <input type="text" name="zona" required="true" placeholder="zona" th:field="*{zona.idZona}"/> 
+                </fieldset>
+
+                
+
+                               
+                
+                <hr/>
+                <input type="submit" name="guardar" value="guardar"/>
+            </form>   
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>
+ 

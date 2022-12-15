@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>CC Proveedores</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+    </head>
+    <body>    
+        
+        <div class="contenido">
+            <h2>Datos de Proveedor</h2>
+            <a th:href = "@{/proveedor/listado}">Regresar</a>
+            <hr/>
+            <form th:action="@{/proveedor/guardar}"
+                method="post"
+                th:object="${proveedor}">
+
+                <input type="hidden" name="idProveedor" th:fiel="*{idProveedor}"/>
+                             
+                
+                <fieldset>
+                    <label for="ID">ID: </label>
+                    <input type="number" name="ID" required="true" placeholder="ID" th:field="*{idProveedor}"/> 
+                </fieldset>
+
+                                
+                <fieldset>
+                    <label for="descripcion">Descripcion: </label>
+                    <input type="text" name="descripcion" required="true" placeholder="descripcion" th:field="*{descripcion}"/> 
+                </fieldset>
+
+                <fieldset>
+                    <label for="telefono">Telefono: </label>
+                    <input type="text" name="telefono" required="true" placeholder="telefono" th:field="*{telefono}"/> 
+                </fieldset>
+
+                <fieldset>
+                    <label for="cuenta"># Cuenta: </label>
+                    <input type="text" name="cuenta" required="true" placeholder="cuenta" th:field="*{num_cuenta}"/> 
+                </fieldset>
+                
+                <hr/>
+                <input type="submit" name="guardar" value="guardar"/>
+            </form>   
+        </div>
+    </body>
+</html>
+ 

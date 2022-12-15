@@ -28,7 +28,6 @@ public class VehiculoServiceImpl implements VehiculoService {
     @Autowired
     private VehiculoDao vehiculoDao;
     //metodos para crear un crud .. CREATE, READ, UPDATE, DELETE
-    
     //aqui va la implementacion de credito
     
     
@@ -54,8 +53,7 @@ public class VehiculoServiceImpl implements VehiculoService {
         //Vehiculo vehiculo = vehiculo.getVehiculo();
         //inserta el vehiculo antes que el vehiculo
         //vehiculo = vehiculoDao.save(vehiculo);
-        //vehiculo.setVehiculo(vehiculo);
-        
+        //vehiculo.setVehiculo(vehiculo); 
         vehiculoDao.save(vehiculo);
     }
     

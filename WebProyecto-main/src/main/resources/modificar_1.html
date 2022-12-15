@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Tienda</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+    </head>
+    <body>    
+        
+        <div class="contenido">
+            <h2>Datos de Zona</h2>
+            <a th:href = "@{/zona/listado}">Regresar</a>
+            <hr/>
+            <form th:action="@{/zona/guardar}"
+                method="post"
+                th:object="${zona}">
+
+                <input type="hidden" name="idZona" th:fiel="*{idZona}"/>
+                <input type="hidden" name="descripcion" th:field="*{vehiculo.num_placa}"/> 
+                <input type="hidden" name="descripcionVeh"  th:field="*{vehiculo.descripcion}"/> 
+               
+                
+                <fieldset>
+                    <label for="descripcion">Descripcio: </label>
+                    <input type="text" name="descripcion" required="true" placeholder="descripcion" th:field="*{descripcion}"/> 
+                </fieldset>
+
+                                
+                <fieldset>
+                    <label for="vehiculo">Vehiculo: </label>
+                    <input type="number" name="vehiculo" required="true" placeholder="vehiculo" th:field="*{vehiculo.idVehiculo}"/> 
+                </fieldset>
+
+                                         
+                
+                <hr/>
+                <input type="submit" name="guardar" value="guardar"/>
+            </form>   
+        </div>
+    </body>
+</html>
+ 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:fragment="head">
+        <title>CControl</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesone/css/all.css}"/>
+        <link href="css/menu.css" rel="stylesheet" />
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+
+                <body class="body text-white-50 bg-dark">
+                        <header th:replace="layout/plantilla :: header"/>
+                    <div th:if="${zonas != null and !zonas.empty}">
+                        <section th:replace="cobro/fragmentosCobro :: listadoZonas"/>  
+                    </div>
+                    <div class="text-center p-2" th:if="${zonas == null or zonas.empty}">
+                        <a>NO EXISTEN ZONAS</a>
+                    </div>
+                    <footer th:replace="layout/plantilla :: footer"/>
+                </body>
+                </html>

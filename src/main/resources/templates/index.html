@@ -1,47 +1,47 @@
 <!-- <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<title>Menù Lateral con Css</title>
+        <meta charset="UTF-8">
+        <title>Menù Lateral con Css</title>
         <link href="css/style_menu.css" rel="stylesheet" />
 </head>
 <body>
-	<header class="header">
-		<div class="container">
-		<div class="btn-menu">
-			<label for="btn-menu">☰</label>
-		</div>
-			<div class="logo">
+        <header class="header">
+                <div class="container">
+                <div class="btn-menu">
+                        <label for="btn-menu">☰</label>
+                </div>
+                        <div class="logo">
                             <img src="img/asfgdfg.png" alt=""/>
-			</div>
-			<nav class="menu">
-				<a href="#">Inicio</a>
-				<a href="#">Nosotros</a>
-				<a href="#">Blog</a>
-				<a href="#">Contacto</a>
+                        </div>
+                        <nav class="menu">
+                                <a href="#">Inicio</a>
+                                <a href="#">Nosotros</a>
+                                <a href="#">Blog</a>
+                                <a href="#">Contacto</a>
                                 <a href="#">aplicación</a>
-			</nav>
-		</div>
-	</header>
+                        </nav>
+                </div>
+        </header>
     
-	<div class="capa"></div>
+        <div class="capa"></div>
         
         
 
 <input type="checkbox" id="btn-menu">
 <div class="container-menu">
     
-	<div class="cont-menu">
-		<nav>
-			<a href="#">Portafolio</a>
-			<a href="#">Servicios</a>
-			<a href="#">Suscribirse</a>
-			<a href="#">Facebook</a>
-			<a href="#">Youtube</a>
-			<a href="#">Instagram</a>
-		</nav>
-		<label for="btn-menu">✖️</label>
-	</div>
+        <div class="cont-menu">
+                <nav>
+                        <a href="#">Portafolio</a>
+                        <a href="#">Servicios</a>
+                        <a href="#">Suscribirse</a>
+                        <a href="#">Facebook</a>
+                        <a href="#">Youtube</a>
+                        <a href="#">Instagram</a>
+                </nav>
+                <label for="btn-menu">✖️</label>
+        </div>
 </div>
 
 </body>
@@ -54,43 +54,49 @@
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head th:replace="layout/plantilla :: head"/>
     <body class="body text-info bg-dark">
         <header th:replace="layout/plantilla :: header"/>
-        
-        <div class="contenido" style="margin-left: 600px; margin-right: 600px; margin-top: 70px">
-        <div class="row g-3"><h2><u class="text-warning bg-dark">BIENVENIDOS</u></h2></div>
+
+        <div class="contenido" style="display: flex; justify-content: center; margin-top: 70px; font-family: serif">
+            <div class="row g-3"><h2><u class="text-warning bg-dark">BIENVENIDOS</u></h2></div>
         </div>
-        
-        <div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 70px">  
-        <div class="row g-3"><h4><u class="text-warning bg-dark">Logo</u></h4></div>
-        <img src="/static/img/LogoPrincipal.png" alt="" height="50px" width="50px" style="border: 3px solid orange"/>
+
+        <div class="contenido" >  <!-- style="display: flex; justify-content: center; margin-top: 90px" -->
+            <div class="row g-3"><h4><u class="text-warning bg-dark" style="display: flex; justify-content: center; margin-top: 90px; font-family: serif; font-size: 30px">Logo</u></h4></div>
+           <!-- <img src="/static/img/LogoPrincipal.png" alt="" height="500px" width="700px" style="border: 3px solid orange; margin-left: -300px; margin-right: -300px; margin-top: 50px"/> --> 
+           <img src="../static/img/LogoPrincipal.png" height="500px" width="750px" style="border: 3px solid orange; margin-left: 300px; margin-right: 200px; display: flex; justify-content: center; margin-top: 50px"/> 
         </div>
-        
-        <hr class="text-light"/> 
+
+        <!-- <hr class="text-light" style="margin-left: 300px; margin-right: 200px; margin-top: 70px"/> -->
+        <hr class="text-light" style="margin-left: 200px; margin-right: 200px; justify-content: center; margin-top: 70px"/>
         <!-- <hr class="text-light" style="border-left: 6px; solid: white; height: 420px; position: absolute; margin-left: -4px;  top: 60px;""/> -->
-        
+
         <div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 90px"> 
-        <div class="row g-3"><h4><u class="text-warning bg-dark">Descripción</u></h4></div>
-        <p class="text-light" style="border: 3px solid orange">
-            Nuestro sitio web ofrece llevar un control efectivo y eficiente de las labores de previsión de tesorería en las empresas, la cual, contamos con herramientas que ofrecen al usuario ingresar los datos personales para así obtener un mejor seguimiento de los cobros de cada cliente registrado en las diferentes categorías que se ofrece como clientes, zonas, vehículos, proveedor, productos, cobros y estadísticas. Por lo tanto, el control de los créditos de una empresa son los cobros procedentes de clientes pendientes a pagar. 
-        </p>
+            <div class="row g-3"><h4><u class="text-warning bg-dark" style="display: flex; justify-content: center; font-family: serif; font-size: 30px">Descripción</u></h4></div>
+            <p class="text-light" style="border: 3px solid orange; margin-top: 35px; display: flex; justify-content: center; font-family: sans-serif; padding-bottom: 30px; padding-top: 30px; padding-right: 50px; padding-left: 50px">
+                Nuestro sitio web ofrece llevar un control efectivo y eficiente de las labores de previsión de tesorería en las empresas, la cual, contamos con herramientas que ofrecen al usuario ingresar los datos personales para así obtener un mejor seguimiento de los cobros de cada cliente registrado en las diferentes categorías que se ofrece como clientes, zonas, vehículos, proveedor, productos, cobros y estadísticas. Por lo tanto, el control de los créditos de una empresa son los cobros procedentes de clientes pendientes a pagar. 
+            </p>
         </div>
-        
-        <hr class="text-light"/>  
-        
+
+        <!-- <hr class="text-light" style="margin-left: 300px; margin-right: 200px; margin-top: 70px"/>   -->
+        <hr class="text-light" style="margin-left: 200px; margin-right: 200px; justify-content: center; margin-top: 70px"/>
+
         <!-- <div class="contenido" style="margin-left: 1100px; margin-right: 1100px; margin-top: -770px"> -->
-        <div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 90px">
-        <div class="row g-3"><h4><u class="text-warning bg-dark">Grupo</u></h4></div>
-        <p class="text-light" style="border: 3px solid orange">
-            4
-        </p>
+        
+        <!-- <div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 90px"> -->
+        <div class="contenido">
+            <div class="row g-3"><h4><u class="text-warning bg-dark" style="display: flex; justify-content: center; margin-top: 70px; font-family: serif; font-size: 30px">Grupo</u></h4></div>
+            <p  style="color: black; height: 300px; border: 3px solid orange; margin-left: 450px; margin-right: 450px; margin-top: 35px; background: gray; 
+               padding-bottom: 30px; padding-top: 30px; padding-right: 170px; padding-left: 170px; font-size: 150px">
+                4
+            </p>
+
         </div>
+        <footer th:replace="layout/plantilla :: footer"/> 
         
-        
-        <footer th:replace="layout/plantilla :: footer"/>
-    </body>
+    </body> 
     
 </html>

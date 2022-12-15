@@ -1,4 +1,4 @@
-
+/*
 package com.cc.domain;
 
 import java.io.Serializable;
@@ -39,12 +39,12 @@ public class Producto implements Serializable {
 
 }
 
+*/  
 
 
 
 
-
-/*NOTA= DE AQUÍ PARA ARRIBA ERA COMO ESTABA ESTA CLASE, DE AQUÍ PARA ABAJO ESTAN LOS CAMBIOS QUE REALICE
+/*NOTA= DE AQUÍ PARA ARRIBA ERA COMO ESTABA ESTA CLASE, DE AQUÍ PARA ABAJO ESTAN LOS CAMBIOS QUE REALICE*/
 
 
 
@@ -88,4 +88,3 @@ public class Producto implements Serializable {
     
 
 }
-*/

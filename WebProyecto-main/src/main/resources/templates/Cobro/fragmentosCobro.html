@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Control Credito</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>    
+        
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light bg-dark">
+            <div class="container bg-">
+                <div class="row">
+                    <div class="col-md-3 " sec:authorize="hasRole('ROLE_ADMIN')">   
+                        <button 
+                            type="button" 
+                            class="btn btn-primary btn-block " 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#agregarCuenta">
+                            <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        <section th:fragment="listadoCuentas" id="cuentas">
+            <div class="container text-warning bg-dark">
+                <div class="row">
+                    <div class="col-md-10 bg-dark">
+                        <div class="card bg-dark">
+                            <div class="card-header bg-dark">
+                                <h4>[[#{cuenta.titulo}]]</h4>
+                            </div>
+                            <div th:if="${cuentas != null and !cuentas.empty}">
+                                <table class="table table-dark table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th th:text="#{cuenta.idCuenta}">Id</th>
+                                            <th th:text="#{cuenta.nombre}">Nombre</th>
+                                            <th th:text="#{cuenta.telefono}">Telefono</th>
+                                            <th th:text="#{cuenta.direccion}">Direccion</th>
+                                             <th th:text="#{cuenta.ultabono}">Ultimo Abono</th>
+                                            <th th:text="#{cuenta.saldo}">Saldo</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="cuenta, contador : ${cuentas}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${cuenta.idCuenta}]]</td>
+                                            <td>[[${cuenta.cliente.nombre}]]</td>
+                                            <td>[[${cuenta.cliente.telefono}]]</td>
+                                            <td>[[${cuenta.cliente.direccion}]]</td>
+                                            <td>[[${cuenta.ult_abono}]]</td>
+                                            <td class="text-end">[[${new java.text.DecimalFormat('₡#,##0.00').format(cuenta.saldo)}]]</td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/cobro/modificar/}+${cuenta.idCuenta}"
+                                                   class="btn btn-success">
+                                                    <i class="fas fa-pen"></i> [[#{cuenta.abonar}]]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${cuentas == null or cuentas.empty}">
+                                <span th:text="#{cuenta.no_mostrar}">Lista vacía</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card text-center bg-danger text-white mb-3">
+                            <div class="card-body">
+                                <h3 th:text="#{cuenta.saldoTotal}">Saldo Total</h3>
+                                <h6 class="display-6">
+                                    [[${SaldoTotal}]]
+                                </h6>
+                            </div>
+                        </div>
+
+                        <div class="card text-center bg-success text-white mb-2">
+                            <div class="card-body">
+                                <h3 th:text="#{cuenta.totalCuentas}">Total Cuentas</h3>
+                                <h4 class="display-4">
+                                    <i class="fas fa-users"></i> [[${totalCuentas}]]
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        
+        <section th:fragment="agregarCuenta">
+            <div id="agregarCuenta" class="modal fade " tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg bg-dark">
+                    <div class="modal-content bg-dark">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Cuenta</h5>
+                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/cobro/guardar}" th:object="${cuenta}"
+                              method="POST" class="was-validated bg-dark">
+                            <div class="modal-body">
+                                <div class="form-group bg-dark">
+                                    <label  for="idCuenta" th:text="#{cuenta.id}">ID Cuenta</label>
+                                    <input type="number" class="form-control text-white bg-dark" name="idCuenta" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="idCliente" th:text="#{cuenta.cliente}">ID Cliente</label>
+                                    <input type="number" class="form-control text-white bg-dark" name="idCliente" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ult_abono" th:text="#{cuenta.ultabono}">Ultimo Abono</label>
+                                    <input type="text" class="form-control text-white bg-dark" name="ult_abono" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="saldo" th:text="#{cuenta.saldo}">Saldo</label>
+                                    <input type="number" class="form-control text-white bg-dark" name="saldo" required="true"/>
+                                </div>
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section th:fragment="editarCuenta">            
+            <form method="POST"
+                  th:action="@{/cobro/abonar} + montoAbono"
+                  th:object="${cuenta}"
+                  class="was-validated">
+                <input type="hidden" name="idCuenta" th:field="*{idCuenta}"/>
+                <section th:replace="cobro/fragmentosCobro :: botonesEditar"/> 
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{accion.actualizar}]]</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                    <label for="idCuenta" th:text="#{cuenta.nombre}">ID Cuenta</label>
+                                    <input type="number" class="form-control" name="idCuenta" required="true"/>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="cuenta.ult_abono" th:text="#{cuenta.ult_abono}">Ultimo Abono</label>
+                                    <input type="date" class="form-control" name="ult_abono" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cuenta.saldo" th:text="#{cuenta.saldo}">Saldo</label>
+                                    <input type="number" class="form-control" name="saldo"/>
+                                </div>    
+                                <div class="form-group">
+                                    <label for="abono" th:text="#{cuenta.abono}">Monto abono</label>
+                                    <input type="number" class="form-control" name="montoAbono"/>
+                                </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+            
+        <section th:fragment="botonesEditar">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a th:href="@{/cobro/listado}" class="btn btn-ligth btn-block">
+                                <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <a th:href="@{/cobro/eliminar/}+${cuenta.idCuenta}"
+                               class="btn btn-danger btn-block">
+                                <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                
+                
+        <section th:fragment="botonesAbonar">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a th:href="@{/cobro/listado}" class="btn btn-ligth btn-block">
+                                <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <a th:href="@{/cobro/eliminar/}+${cuenta.idCuenta}"
+                               class="btn btn-danger btn-block">
+                                <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                
+        <section th:fragment="listadoZonas" id="zonas">
+            <div class="container text-warning bg-dark">
+                <div class="row">
+                    <div class="col-md-10 bg-dark">
+                        <div class="card bg-dark">
+                            <div class="card-header bg-dark">
+                                <h4>[[#{cuenta.zona}]]</h4>
+                            </div>
+                            <div th:if="${zonas != null and !zonas.empty}">
+                                <table class="table table-dark table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            
+                                            <th th:text="#{zona.id}">ID</th>
+                                            <th th:text="#{zona.descripcion}">Descripcion</th>
+                                            <th th:text="#{zona.vehiculo}">Vehiculo</th>
+                                            <th th:text="#{cuenta.iniciar}">Iniciar</th>
+                                            
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="zona, contador : ${zonas}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${zona.idZona}]]</td>
+                                            <td>[[${zona.descripcion}]]</td>
+                                            <td>[[${zona.vehiculo.descripcion}]]</td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/cobro/listado/}+${zona.idZona}"
+                                                   class="btn btn-danger">
+                                                    <i class="fas fa-trash"></i> [[#{cuenta.iniciar}]]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${zonas == null or zonas.empty}">
+                                <span th:text="#{zona.no_mostrar}">Lista vacía</span>
+                            </div>
+                        </div>
+                    </div>               
+                </div>
+            </div>
+        </section>
+                
+                
+        <section th:fragment="abonarCuenta">            
+            <form method="POST"
+                  th:action="@{/cobro/abonar/}"
+                  th:object="${cuenta}"
+                  class="was-validated">
+                <input type="hidden" name="idCuenta" th:field="*{idCuenta}"/>
+                <section th:replace="Cobro/fragmentosCobro :: botonesEditar"/> 
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{accion.actualizar}]]</h4>
+                                    </div>
+                                        <div class="form-group">
+                                            <label for="cliente" th:text="#{cuenta.idCuenta}">ID Cliente</label>
+                                            <input type="number" class="form-control" name="cliente" required="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ult_abono" th:text="#{cuenta.ult_abono}">Ultimo Abono</label>
+                                            <input type="date" class="form-control" name="ult_abono" required="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="saldo" th:text="#{cuenta.saldo}">Saldo</label>
+                                            <input type="number" class="form-control" name="saldo"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Abono" th:text="#{cuenta.abono}">Abono</label>
+                                            <input type="number" class="form-control" name="saldo"/>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        
+    </body>
+</html>
+ 
