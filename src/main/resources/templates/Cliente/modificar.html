@@ -27,10 +27,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 method="post"
                 th:object="${cliente}">
 
-                <input type="number" name="idCliente" th:fiel="*{idCliente}"/>
+                
                 <input type="hidden" name="descripcionZ" th:field="*{zona.descripcion}"/> 
                 <input type="hidden" name="VehiculoId"  th:field="*{zona.vehiculo.idVehiculo}"/>  
                 
+                <fieldset>
+                    <label class="text-warning bg-dark" for="idCliente">ID Cliente: </label>
+                    <input type="number" name="idCliente" required="true" placeholder="ID" th:field="*{idCliente}" disabled="true"/> 
+                </fieldset>
+
                 <fieldset>
                     <label class="text-warning bg-dark" for="nombre">Nombre: </label>
                     <input type="text" name="nombre" required="true" placeholder="Nombre" th:field="*{nombre}"/> 
