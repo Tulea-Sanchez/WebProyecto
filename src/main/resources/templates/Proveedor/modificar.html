@@ -7,14 +7,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>CC Proveedores</title>
+        <!--<meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
         <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesone/css/all.css}"/>
+        <link href="css/menu.css" rel="stylesheet" />
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
-    <body>    
-        
-        <div class="contenido">
-            <h2>Datos de Proveedor</h2>
+    <body class="body text-info bg-dark">    
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 200px">
+            <!--<h2>Datos de Proveedor</h2>-->
+            <div class="row g-3"><h2><u class="text-warning bg-dark">Datos de Proveedor</u></h2></div>
             <a th:href = "@{/proveedor/listado}">Regresar</a>
             <hr/>
             <form th:action="@{/proveedor/guardar}"
@@ -24,24 +31,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <input type="hidden" name="idProveedor" th:fiel="*{idProveedor}"/>
                              
                 
-                <fieldset>
-                    <label for="ID">ID: </label>
+                <fieldset class="table-light">
+                    <label class="text-warning bg-dark" for="ID">ID: </label>
                     <input type="number" name="ID" required="true" placeholder="ID" th:field="*{idProveedor}"/> 
                 </fieldset>
 
                                 
-                <fieldset>
-                    <label for="descripcion">Descripcion: </label>
+                <fieldset class="table-light">
+                    <label class="text-warning bg-dark" for="descripcion">Descripcion: </label>
                     <input type="text" name="descripcion" required="true" placeholder="descripcion" th:field="*{descripcion}"/> 
                 </fieldset>
 
-                <fieldset>
-                    <label for="telefono">Telefono: </label>
+                <fieldset class="table-light">
+                    <label class="text-warning bg-dark" for="telefono">Telefono: </label>
                     <input type="text" name="telefono" required="true" placeholder="telefono" th:field="*{telefono}"/> 
                 </fieldset>
 
-                <fieldset>
-                    <label for="cuenta"># Cuenta: </label>
+                <fieldset class="table-light">
+                    <label class="text-warning bg-dark" for="cuenta"># Cuenta: </label>
                     <input type="text" name="cuenta" required="true" placeholder="cuenta" th:field="*{num_cuenta}"/> 
                 </fieldset>
                 
