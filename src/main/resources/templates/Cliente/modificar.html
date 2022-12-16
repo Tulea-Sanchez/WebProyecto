@@ -18,53 +18,46 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
     </head>
     <body class="body text-info bg-dark">    
-        
+
         <div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 200px">
             <div class="row g-3"><h2><u class="text-warning bg-dark">Datos de Cliente</u></h2></div>
             <a th:href = "@{/cliente/listado}">Regresar</a>
             <hr/>
             <form th:action="@{/cliente/guardar}"
-                method="post"
-                th:object="${cliente}">
-
+                  method="post"
+                  th:object="${cliente}">
                 
                 <input type="hidden" name="descripcionZ" th:field="*{zona.descripcion}"/> 
-                <input type="hidden" name="VehiculoId"  th:field="*{zona.vehiculo.idVehiculo}"/>  
-                
+                <input type="hidden" name="VehiculoId"  th:field="*{zona.vehiculo.idVehiculo}"/> 
+
                 <fieldset>
-                    <label class="text-warning bg-dark" for="idCliente">ID Cliente: </label>
-                    <input type="number" name="idCliente" required="true" placeholder="ID" th:field="*{idCliente}" disabled="true"/> 
+                    <label class="text-warning bg-dark" for="idCliente">Id Cliente</label>
+                    <input type="number" name="idCliente" placeholder="##" th:field="*{idCliente}"/> 
                 </fieldset>
 
                 <fieldset>
-                    <label class="text-warning bg-dark" for="nombre">Nombre: </label>
+                    <label class="text-warning bg-dark" for="nombre">Nombre</label>
                     <input type="text" name="nombre" required="true" placeholder="Nombre" th:field="*{nombre}"/> 
                 </fieldset>
 
                 <fieldset>
-                    <label class="text-warning bg-dark" for="telefono">Teléfono  </label>
+                    <label class="text-warning bg-dark" for="telefono">Teléfono</label>
                     <input type="tel" name="telefono" required="true" placeholder="0000-0000" th:field="*{telefono}"/> 
                 </fieldset>
-                
+
                 <fieldset>
-                    <label class="text-warning bg-dark" for="direccion">Direccion </label>
+                    <label class="text-warning bg-dark" for="direccion">Dirección</label>
                     <input type="text" name="direccion" required="true" placeholder="direccion" th:field="*{direccion}"/> 
                 </fieldset>
-                
+
                 <fieldset>
-                    <label class="text-warning bg-dark" for="zona">ID Zona </label>
-                    <input type="text" name="zona" required="true" placeholder="zona" th:field="*{zona.idZona}"/> 
-                </fieldset>
-
-                
-
-                               
-                
+                    <label class="text-warning bg-dark" for="zona">ID Zona</label>
+                    <input type="number" name="zona" required="true" placeholder="zona" th:field="*{zona.idZona}"/> 
+                </fieldset>                
                 <hr/>
-                <input type="submit" name="guardar" value="guardar"/>
+                <input type="submit" name="guardar" value="Guardar"/>
             </form>   
         </div>
         <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
- 

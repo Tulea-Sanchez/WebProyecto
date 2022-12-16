@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head"/>
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>      
+    </head>
+    <body>
+
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">   
+                        <button 
+                            type="button" 
+                            class="btn btn-primary btn-block" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#agregarProducto">
+                            <i class="fas fa-plus"></i> [[#{producto.agregar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        <section th:fragment="agregarProducto">
+            <div id="agregarProducto" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" th:text="#{producto.agregar}">Agregar Producto</h5>
+                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/producto/guardar}" th:object="${producto}"
+                              method="POST" class="was-validated bg-dark">
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label for="descripcion" th:text="#{producto.descripcion}">Nombre</label>
+                                    <input type="text" class="form-control" name="descripcion" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cantidad" th:text="#{producto.cantidad}">Cantidad</label>
+                                    <input type="number" class="form-control" name="cantidad" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="precio_unit" th:text="#{producto.precio}">Precio Unitario</label>
+                                    <input type="number" class="form-control" name="precio_unit" required="true"/>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

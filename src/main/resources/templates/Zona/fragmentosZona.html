@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head"/>
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>      
+    </head>
+    <body>
+
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">   
+                        <button 
+                            type="button" 
+                            class="btn btn-primary btn-block" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#agregarZona">
+                            <i class="fas fa-plus"></i> [[#{zona.agregar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        <section th:fragment="agregarZona">
+            <div id="agregarZona" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" th:text="#{zona.agregar}">Agregar Zona</h5>
+                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/zona/guardar}" th:object="${zona}"
+                              method="POST" class="was-validated bg-dark">
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label for="descripcion" th:text="#{zona.direccion}">Dirección</label>
+                                    <input type="text" class="form-control" name="descripcion" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="vehiculo" th:text="#{zona.idvehiculo}">Vehiculo</label>
+                                    <input type="number" class="form-control" name="vehiculo" required="true"/>
+                                </div>
+                                  <div class="form-group">
+                                    <label for="num_placa" th:text="#{vehiculo.num_placa}">Número Placa</label>
+                                    <input type="number" class="form-control" name="num_placa" required="true"/>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

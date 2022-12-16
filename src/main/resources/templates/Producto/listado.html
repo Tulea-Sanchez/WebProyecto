@@ -18,45 +18,47 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
 
-                <body class="body text-info bg-dark">
-                    <header th:replace="layout/plantilla :: header"/>
-                    <!--<div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 200px"> -->
-                    <div class="contenido" style="margin-left: 260px; margin-right: 50px; margin-top: 100px">
-                    <section>
-                        <div class="row g-3"><h2><u class="text-warning bg-dark">Datos Productos</u></h2></div>
-                        <a th:href = "@{/producto/nuevo}">Nuevo Producto</a>
-                        <div th:if="${productos != null and !productos.empty}">
-                            <article>
-                                <table class="table table-dark table-striped">
-                                    <thead>
-                                        <tr class="table-light">
-                                            <th class="text-warning bg-dark">Producto</th>
-                                            <th class="text-warning bg-dark">Descripcion</th>
-                                            <th class="text-warning bg-dark">Cantidad</th>
-                                            <th class="text-warning bg-dark">Precio Unitario</th>
-                                            <th class="text-warning bg-dark">Eliminar</th>
-                                            <th class="text-warning bg-dark">Modificar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr th:each="producto : ${productos}">
-                                             <td class="table-primary">[[${producto.idProducto}]]</td>
-                                             <td class="table-primary">[[${producto.descripcion}]]</td>
-                                             <td class="table-primary">[[${producto.cantidad}]]</td>
-                                             <td class="table-primary">[[${producto.precio_unit}]]</td>
-                                             <td class="table-primary"><a th:href="@{/producto/elimina/} + ${producto.idProducto}">Elimina</a></td>
-                                             <td class="table-primary"><a th:href="@{/producto/actualiza/} + ${producto.idProducto}">Actualizar</a></td>
-                                        </tr>
+    <body class="body text-info bg-dark">
+        <header th:replace="layout/plantilla :: header"/>
+        <!--<div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 200px"> -->
+        <div class="contenido" style="margin-left: 260px; margin-right: 50px; margin-top: 100px">
+            <section>
+                <div class="row g-3"><h2><u class="text-warning bg-dark">Datos Productos</u></h2></div>
+                <div th:if="${productos != null and !productos.empty}">
+                    <article>
+                        <table class="table table-dark table-striped">
+                            <thead>
+                                <tr class="table-light">
+                                    <th class="text-warning bg-dark">Id Producto</th>
+                                    <th class="text-warning bg-dark">Descripción</th>
+                                    <th class="text-warning bg-dark">Cantidad</th>
+                                    <th class="text-warning bg-dark">Precio Unitario</th>
+                                    <th class="text-warning bg-dark">Eliminar</th>
+                                    <th class="text-warning bg-dark">Modificar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="producto : ${productos}">
+                                    <td class="table-primary">[[${producto.idProducto}]]</td>
+                                    <td class="table-primary">[[${producto.descripcion}]]</td>
+                                    <td class="table-primary">[[${producto.cantidad}]]</td>
+                                    <td class="table-primary">[[${producto.precio_unit}]]</td>
+                                    <td class="table-primary"><a th:href="@{/producto/elimina/} + ${producto.idProducto}">Elimina</a></td>
+                                    <td class="table-primary"><a th:href="@{/producto/actualiza/} + ${producto.idProducto}">Actualizar</a></td>
+                                </tr>
 
-                                    </tbody>
-                                </table>
-                            </article>
-                        </div>
-                        <div th:if="${productos == null or productos.empty}">
-                            <h3> No existen productos que mostrar </h3>
-                        </div>
-                    </section>
-                    </div>
-                    <footer th:replace="layout/plantilla :: footer"/>
-                </body>
-                </html>
+                            </tbody>
+                        </table>
+                    </article>
+                </div>
+                <div th:if="${productos == null or productos.empty}">
+                    <h3> No existen productos que mostrar </h3>
+                </div>
+            </section>
+
+            <section th:replace="producto/fragmentosProducto :: botonesAgregar"/>
+            <section th:replace="producto/fragmentosProducto :: agregarProducto"/>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

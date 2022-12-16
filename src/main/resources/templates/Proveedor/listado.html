@@ -18,45 +18,50 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
 
-                <body class="body text-info bg-dark">
-                    <header th:replace="layout/plantilla :: header"/>
-                    <!--<div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 200px"> -->
-                    <div class="contenido" style="margin-left: 260px; margin-right: 50px; margin-top: 100px">
-                    <section>
-                        <div class="row g-3"><h2><u class="text-warning bg-dark">Datos Proveedores</u></h2></div>
-                        <a th:href = "@{/proveedor/nuevo}">Nuevo Proveedor</a>
-                        <div th:if="${proveedors != null and !proveedors.empty}">
-                            <article>
-                                <table class="table table-dark table-striped">
-                                    <thead>
-                                        <tr class="table-light">
-                                            <th class="text-warning bg-dark">ID</th>
-                                            <th class="text-warning bg-dark">descripcion</th>
-                                            <th class="text-warning bg-dark">Telefono</th>
-                                            <th class="text-warning bg-dark"># Cuenta</th>
-                                            <th class="text-warning bg-dark">Eliminar</th>
-                                            <th class="text-warning bg-dark">Modificar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr th:each="proveedor : ${proveedors}">
-                                             <td class="table-primary">[[${proveedor.idProveedor}]]</td>
-                                             <td class="table-primary">[[${proveedor.descripcion}]]</td>
-                                             <td class="table-primary">[[${proveedor.telefono}]]</td>
-                                             <td class="table-primary">[[${proveedor.num_cuenta}]]</td>
-                                             <td class="table-primary"><a th:href="@{/proveedor/elimina/} + ${proveedor.idProveedor}">Elimina</a></td>
-                                             <td class="table-primary"><a th:href="@{/proveedor/actualiza/} + ${proveedor.idProveedor}">Actualizar</a></td>
-                                        </tr>
+    <body class="body text-info bg-dark">
+        <header th:replace="layout/plantilla :: header"/>
+        <!--<div class="contenido" style="margin-left: 100px; margin-right: 100px; margin-top: 200px"> -->
+        <div class="contenido" style="margin-left: 260px; margin-right: 50px; margin-top: 100px">
+            <section>
+                <div class="row g-3"><h2><u class="text-warning bg-dark">Datos Proveedores</u></h2></div>
+  
+                <div th:if="${proveedors != null and !proveedors.empty}">
+                    <article>
+                        <table class="table table-dark table-striped">
+                            <thead>
+                                <tr class="table-light">
+                                    <th class="text-warning bg-dark">ID</th>
+                                    <th class="text-warning bg-dark">Nombre del Proveedor</th>
+                                    <th class="text-warning bg-dark">Teléfono</th>
+                                    <th class="text-warning bg-dark"># Cuenta</th>
+                                    <th class="text-warning bg-dark">Eliminar</th>
+                                    <th class="text-warning bg-dark">Modificar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="proveedor : ${proveedors}">
+                                    <td class="table-primary">[[${proveedor.idProveedor}]]</td>
+                                    <td class="table-primary">[[${proveedor.descripcion}]]</td>
+                                    <td class="table-primary">[[${proveedor.telefono}]]</td>
+                                    <td class="table-primary">[[${proveedor.num_cuenta}]]</td>
+                                    <td class="table-primary"><a th:href="@{/proveedor/elimina/} + ${proveedor.idProveedor}">Elimina</a></td>
+                                    <td class="table-primary"><a th:href="@{/proveedor/actualiza/} + ${proveedor.idProveedor}">Actualizar</a></td>
+                                </tr>
 
-                                    </tbody>
-                                </table>
-                            </article>
-                        </div>
-                        <div th:if="${proveedors == null or proveedors.empty}">
-                            <h3> No existen clientes que mostrar </h3>
-                        </div>
-                    </section>
-                    </div>
-                    <footer th:replace="layout/plantilla :: footer"/>
-                </body>
-                </html>
+                            </tbody>
+                        </table>
+                    </article>
+                </div>
+                <div th:if="${proveedors == null or proveedors.empty}">
+                    <h3> No existen clientes que mostrar </h3>
+                </div>
+            </section>
+
+
+
+            <section th:replace="proveedor/fragmentosProveedor :: botonesAgregar"/>
+            <section th:replace="proveedor/fragmentosProveedor :: agregarProveedor"/>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>
