@@ -16,6 +16,7 @@ import com.cc.domain.Cuenta;
 import com.cc.domain.Zona;
 import java.util.List;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -108,17 +109,17 @@ public class CuentaController {
     }
     
     
-    @GetMapping("/cobro/abonar/{abono}")
-    public String Abonar(Model model, Cuenta cuenta, int abono){
+    @PostMapping("/cobro/abonar/")
+    public String Abonar(@RequestParam int idCuenta,@RequestParam int saldo,@RequestParam int abono, Model model){
         
+        Cuenta cuenta = cuentaService.getCuenta(Long.parseLong(idCuenta+""));
         
-        int nuevoSaldo = cuenta.getSaldo() - abono;
-        cuenta.setSaldo(nuevoSaldo);
+        int oldSaldo = cuenta.getSaldo();
+        cuenta.setSaldo(oldSaldo - abono);
         cuentaService.save(cuenta);
-
-        Model cuentas = returnVar(cuenta.getCliente().getZona());
-       
-        return "/cobro/listado/";
+        
+        model.addAttribute("cuentas", RetornaCuentas(cuenta.getCliente().getZona()));
+        return "/cobro/listado";
     }
     
     
@@ -140,7 +141,7 @@ public class CuentaController {
         return "redirect:/cobro/listado";
     }
     
-    @GetMapping("/cobro/modificar/{idCuenta}")
+    @GetMapping("/cobro/check/{idCuenta}")
     public String cuentaActualiza(Cuenta cuenta, Model model){
         System.out.println(cuenta.getIdCuenta() + "id enviado" );
         cuenta = cuentaService.getCuenta(cuenta.getIdCuenta());
@@ -153,7 +154,37 @@ public class CuentaController {
         System.out.println(cuenta + "id enviado" );
         cuenta = cuentaService.getCuenta(cuenta);
         model.addAttribute("cuenta", cuenta);
-        return "/cobro/modificar/"+cuenta.getIdCuenta().toString();
+        return "/cobro/modificar/";
+    }
+    
+    
+    
+    public List <Cuenta> RetornaCuentas(Zona zona){
+        
+        var auxiliares = cuentaService.getCuentas();
+        List <Cuenta> cuentas = cuentaService.getCuentas();
+        var ReturnCuentas = cuentaService.returnNull();
+        cuentas.removeAll(auxiliares);
+        
+        
+        for (var c: auxiliares) {
+            
+            Long cuent = c.getCliente().getZona().getIdZona();
+            Long zon = zona.getIdZona();
+            System.out.println(zona.getIdZona() + "zona retornacuentas");
+            //assertThat(l1.equals(l2)).isTrue();
+            
+            if (cuent == zon)
+            {
+                System.out.println("entra al if");
+                cuentas.add(cuentaService.getCuenta(c));
+                System.out.println("cuenta agregada" + c.getCliente());
+
+            }
+        }
+        
+        
+        return cuentas;
     }
     
     

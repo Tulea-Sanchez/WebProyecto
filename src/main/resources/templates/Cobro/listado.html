@@ -23,7 +23,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <header th:replace="layout/plantilla :: header"/>
                     
                     <div class="text-center p-2" th:if="${cuentas != null and !cuentas.empty}">
-                        <section th:replace="cobro/fragmentosCobro :: botonesAgregar"/>
                         <section th:replace="cobro/fragmentosCobro :: agregarCuenta"/>
                         <section th:replace="cobro/fragmentosCobro :: listadoCuentas"/> 
                     </div>

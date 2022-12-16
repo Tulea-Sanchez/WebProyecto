@@ -63,7 +63,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             <td>[[${cuenta.ult_abono}]]</td>
                                             <td class="text-end">[[${new java.text.DecimalFormat('₡#,##0.00').format(cuenta.saldo)}]]</td>
                                             <td>
-                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/cobro/modificar/}+${cuenta.idCuenta}"
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/cobro/check/}+${cuenta.idCuenta}"
                                                    class="btn btn-success">
                                                     <i class="fas fa-pen"></i> [[#{cuenta.abonar}]]
                                                 </a>
@@ -145,7 +145,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                   th:object="${cuenta}"
                   class="was-validated">
                 <input type="hidden" name="idCuenta" th:field="*{idCuenta}"/>
-                <section th:replace="cobro/fragmentosCobro :: botonesEditar"/> 
+                <section th:replace="cobro/fragmentosCobro :: botonAbonar"/> 
                 <div id="details">
                     <div class="container">
                         <div class="row">
@@ -157,16 +157,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <div class="card-body">
                                         <div class="form-group">
                                     <label for="idCuenta" th:text="#{cuenta.nombre}">ID Cuenta</label>
-                                    <input type="number" class="form-control" name="idCuenta" required="true"/>
+                                    <input type="number" class="form-control" name="idCuenta" required="true" th:field="*{idCuenta}"/>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="cuenta.ult_abono" th:text="#{cuenta.ult_abono}">Ultimo Abono</label>
-                                    <input type="date" class="form-control" name="ult_abono" required="true"/>
+                                    <input type="date" class="form-control" name="ult_abono" required="true" th:field="*{ult_abono}"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="cuenta.saldo" th:text="#{cuenta.saldo}">Saldo</label>
-                                    <input type="number" class="form-control" name="saldo"/>
+                                    <input type="number" class="form-control" name="saldo" th:field="*{saldo}"/>
                                 </div>    
                                 <div class="form-group">
                                     <label for="abono" th:text="#{cuenta.abono}">Monto abono</label>
@@ -207,25 +207,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </section>
                 
                 
-        <section th:fragment="botonesAbonar">
-            <div id="actions" class="py-4 mb-4 bg-light">
-                <div class="container">
-                    <div class="row">
+                <section th:fragment="botonAbonar">
+            <div id="actions" class="py-4 mb-4 bg-dark text-warning">
+                <div class="container bg-dark text-warning">
+                    <div class="row bg-dark text-warning">
+                        <div class="col-md-3 bg-dark text-warning">
+                            <a th:href="@{/cobro/listado}" class="btn btn-block text-warning">
+                                <i class="fas fa-arrow-left text-warning"></i> [[#{accion.regresar}]]
+                            </a>
+                        </div>
                         <div class="col-md-3">
-                            <a th:href="@{/cobro/listado}" class="btn btn-ligth btn-block">
+                            <button type="submit" class="btn btn-success btn-block text-warning">
+                                <i class="fas fa-check"></i> [[#{accion.abonar}]]
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                
+                
+        <section th:fragment="botonesAbonar">
+            <div id="actions" class="py-4 mb-4 bg-dark">
+                <div class="container bg-dark">
+                    <div class="row bg-dark">
+                        <div class="col-md-3 bg-dark">
+                            <a th:href="@{/cobro/listado}" class="btn btn-ligth btn-block ">
                                 <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                             </a>
                         </div>
                         <div class="col-md-3">
                             <button type="submit" class="btn btn-success btn-block">
-                                <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                                <i class="fas fa-check"></i> [[#{accion.abonar}]]
                             </button>
-                        </div>
-                        <div class="col-md-3">
-                            <a th:href="@{/cobro/eliminar/}+${cuenta.idCuenta}"
-                               class="btn btn-danger btn-block">
-                                <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -281,37 +296,39 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </section>
                 
                 
-        <section th:fragment="abonarCuenta">            
+        <section th:fragment="abonarCuenta" class=" bg-dark">            
             <form method="POST"
                   th:action="@{/cobro/abonar/}"
                   th:object="${cuenta}"
-                  class="was-validated">
+                  class="was-validated  bg-dark">
                 <input type="hidden" name="idCuenta" th:field="*{idCuenta}"/>
-                <section th:replace="Cobro/fragmentosCobro :: botonesEditar"/> 
+                <section th:replace="Cobro/fragmentosCobro :: botonAbonar"/> 
                 <div id="details">
                     <div class="container">
                         <div class="row">
                             <div class="col">
                                 <div class="card">
-                                    <div class="card-header">
+                                    <div class="card-header bg-dark text-warning">
                                         <h4>[[#{accion.actualizar}]]</h4>
                                     </div>
-                                        <div class="form-group">
+                                    <div class="form-group bg-dark text-warning">
+                                            <label for="cliente" th:text="Cliente">Cliente</label>
+                                            <label for="cliente.nombre" th:text="*{cliente.nombre}">Cliente</label>
+                                    </div>
+                                    <div>
+                                        <div class="form-group bg-dark text-warning">
                                             <label for="cliente" th:text="#{cuenta.idCuenta}">ID Cliente</label>
-                                            <input type="number" class="form-control" name="cliente" required="true"/>
+                                            <input type="number" class="form-control bg-dark text-warning" name="cliente" required="true" th:field="*{idCuenta}"/>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="ult_abono" th:text="#{cuenta.ult_abono}">Ultimo Abono</label>
-                                            <input type="date" class="form-control" name="ult_abono" required="true"/>
-                                        </div>
-                                        <div class="form-group">
+                                        <div class="form-group bg-dark text-warning">
                                             <label for="saldo" th:text="#{cuenta.saldo}">Saldo</label>
-                                            <input type="number" class="form-control" name="saldo"/>
+                                            <input type="number" class="form-control bg-dark text-warning" name="saldo" th:field="*{saldo}"/>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group bg-dark text-warning">
                                             <label for="Abono" th:text="#{cuenta.abono}">Abono</label>
-                                            <input type="number" class="form-control" name="saldo"/>
-                                        </div>  
+                                            <input type="number" class="form-control bg-dark text-warning" name="abono" required="true"/>
+                                        </div> 
+                                    </div>
                                     </div>
                                 </div>
                             </div>
